@@ -3,6 +3,7 @@ import Hero from "./sections/Hero";
 import Projects from "./sections/Projects";
 import Stats from "./sections/Stats";
 import Arsenal from "./sections/Arsenal";
+import Certificates from "./sections/Certificates";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Projects />
       <Stats />
       <Arsenal />
+       <Certificates />
     </div>
   );
 }
