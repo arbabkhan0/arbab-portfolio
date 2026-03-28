@@ -1,8 +1,14 @@
+import Navbar from "./components/Navbar";
+import Hero from "./sections/Hero";
+import Projects from "./sections/Projects";
+
 function App() {
   return (
-    <h1 className="text-5xl text-center text-red-500 mt-10">
-      Tailwind Working 🔥
-    </h1>
+    <div>
+      <Navbar />
+      <Hero />
+      <Projects />
+    </div>
   );
 }
 
