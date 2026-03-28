@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* ── Container ── */
+.netflix-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.netflix-center-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Wordmark ── */
+.netflix-wordmark {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+
+  opacity: 0;
+  transform: scale(0.9);
+  animation: introSnapIn 0.4s 0.1s forwards ease-out;
+
+  will-change: transform, opacity, filter;
+  backface-visibility: hidden;
+}
+
+/* ── The actual name text — Netflix logo clone ── */
+.netflix-name {
+  font-family: 'Bebas Neue', 'Arial Black', Impact, sans-serif;
+  font-size: clamp(80px, 15vw, 180px);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  user-select: none;
+
+  /* Netflix logo red */
+  color: #B81D24;
+
+  /* Multi-layer 3D extrusion going bottom-right — exactly like the Netflix logo */
+  text-shadow:
+    1px  1px  0 #991219,
+    2px  2px  0 #841019,
+    3px  3px  0 #6f0e15,
+    4px  4px  0 #5a0b11,
+    5px  5px  0 #46090d,
+    6px  6px  0 #310609,
+    7px  7px  0 #1e0305,
+    8px  8px  12px rgba(0, 0, 0, 0.9),
+    0    0    40px rgba(180, 15, 20, 0.15);
+}
+
+/* Space between first and last name */
+.name-space {
+  display: inline-block;
+  width: 0.25em;
+}
+
+/* ── Initial snap in ── */
+@keyframes introSnapIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── On click — fast cinematic zoom out ── */
+.netflix-wordmark.animate {
+  animation: netflixBlast 2.0s forwards;
+  animation-timing-function: cubic-bezier(0.6, 0, 1, 0.4);
+}
+
+@keyframes netflixBlast {
+  0%   {
+    transform: scale(1);
+    opacity: 1;
+    filter: brightness(1) blur(0px);
+  }
+  10%  {
+    transform: scale(1.05);
+    opacity: 1;
+    filter: brightness(1.8) blur(0px);
+  }
+  100% {
+    transform: scale(5.5);
+    opacity: 0;
+    filter: brightness(3.5) blur(8px);
+  }
+}
+
+/* ── Click hint ── */
+.click-hint {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #666;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', sans-serif;
+  animation: blink 1.6s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 0.9; }
+}
