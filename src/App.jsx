@@ -3,10 +3,10 @@ import "./App.css";
 import NetflixIntro from "./components/NetflixIntro";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
+import About from "./sections/About";
 import Projects from "./sections/Projects";
-import Certificates from "./sections/Certificates";
-import Stats from "./sections/Stats";
 import Arsenal from "./sections/Arsenal";
+import Certificates from "./sections/Certificates";
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 
@@ -18,13 +18,13 @@ function App() {
   }
 
   return (
-    <div className="bg-[#141414] min-h-screen">
+    <div style={{ background: "#141414", minHeight: "100vh" }}>
       <Navbar />
       <Hero />
+      <About />
       <Projects />
-      <Certificates />
-      <Stats />
       <Arsenal />
+      <Certificates />
       <Contact />
       <Footer />
     </div>

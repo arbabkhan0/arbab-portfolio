@@ -6,7 +6,7 @@ const Projects = () => {
   return (
     <section id="projects" className="pt-16 pb-4 bg-[#141414]">
       {/* Section header */}
-      <div className="px-6 md:px-10 mb-6">
+      <div className="px-10 mb-6">
         <h2 className="text-3xl md:text-4xl font-black text-white">
           My <span className="text-[#E50914]">Projects</span>
         </h2>

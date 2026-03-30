@@ -11,123 +11,198 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { label: "About", href: "#hero" },
-    { label: "Projects", href: "#projects" },
-    { label: "Skills", href: "#skills" },
-    { label: "Contact", href: "#contact" },
+    { label: "About",        href: "#about" },
+    { label: "Projects",     href: "#projects" },
+    { label: "Skills",       href: "#skills" },
+    { label: "Certificates", href: "#certificates" },
+    { label: "Contact",      href: "#contact" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
-          ? "bg-[#141414]/95 shadow-xl shadow-black/40 backdrop-blur-sm"
-          : "bg-gradient-to-b from-black/80 to-transparent"
-        }`}
+      style={{
+        position: "fixed",
+        top: 0,
+        width: "100%",
+        zIndex: 50,
+        transition: "background 0.4s ease, box-shadow 0.4s ease",
+        background: scrolled
+          ? "rgba(20, 20, 20, 0.96)"
+          : "linear-gradient(to bottom, rgba(0,0,0,0.75), transparent)",
+        backdropFilter: scrolled ? "blur(10px)" : "none",
+        boxShadow: scrolled ? "0 2px 30px rgba(0,0,0,0.5)" : "none",
+      }}
     >
-      <div className="w-full pl-4 pr-6 md:pl-6 md:pr-10 py-4 flex items-center justify-between">
-        {/* Left side: Logo + Nav links */}
-        <div className="hidden md:flex items-center gap-7">
-          {/* AK — Netflix-style logo */}
+      <div
+        style={{
+          maxWidth: "100%",
+          padding: "0 40px",
+          height: 64,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* ── Left: Logo + Nav links ── */}
+        <div style={{ display: "flex", alignItems: "center", gap: 36 }}>
+          {/* AK Netflix logo */}
           <a
             href="#hero"
             style={{
               fontFamily: "Georgia, 'Times New Roman', serif",
-              fontSize: "2.2rem",
+              fontSize: "2rem",
               fontWeight: 900,
               fontStyle: "italic",
               color: "#E50914",
               letterSpacing: "-1px",
-              textShadow:
-                "2px 2px 0 #8B0000, 3px 3px 0 #6b0000, 0 4px 12px rgba(229,9,20,0.4)",
+              textShadow: "2px 2px 0 #8B0000, 3px 3px 0 #6b0000, 0 4px 12px rgba(229,9,20,0.4)",
               lineHeight: 1,
               textDecoration: "none",
               userSelect: "none",
               transition: "opacity 0.2s",
+              flexShrink: 0,
             }}
-            onMouseEnter={e => e.currentTarget.style.opacity = "0.85"}
-            onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
             AK
           </a>
 
-          {/* Nav links — right next to logo */}
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-300 relative group"
-            >
-              {link.label}
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#E50914] group-hover:w-full transition-all duration-300" />
-            </a>
-          ))}
+          {/* Desktop nav links */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 28,
+            }}
+            className="desktop-nav"
+          >
+            {navLinks.map((link) => (
+              <NavLink key={link.label} {...link} />
+            ))}
+          </div>
         </div>
 
-        {/* Mobile: AK Netflix-style logo */}
+        {/* ── Right: Resume button ── */}
+        <div className="desktop-resume">
+          <a
+            href="https://github.com/arbabkhan0"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: "#E50914",
+              color: "#fff",
+              fontSize: 14,
+              fontWeight: 700,
+              padding: "9px 22px",
+              borderRadius: 6,
+              textDecoration: "none",
+              transition: "all 0.25s ease",
+              letterSpacing: "0.02em",
+              fontFamily: "inherit",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "#b20710"; e.currentTarget.style.transform = "scale(1.04)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "#E50914"; e.currentTarget.style.transform = "scale(1)"; }}
+          >
+            Resume
+          </a>
+        </div>
+
+        {/* ── Mobile: AK logo ── */}
         <a
           href="#hero"
+          className="mobile-logo"
           style={{
             fontFamily: "Georgia, 'Times New Roman', serif",
-            fontSize: "1.9rem",
+            fontSize: "1.8rem",
             fontWeight: 900,
             fontStyle: "italic",
             color: "#E50914",
-            letterSpacing: "-1px",
-            textShadow: "1px 2px 0 #8B0000, 2px 3px 0 #6b0000",
-            lineHeight: 1,
             textDecoration: "none",
           }}
-          className="md:hidden"
         >
           AK
         </a>
 
-        {/* Right side: Resume button */}
-        <div className="hidden md:flex">
-          <a
-            href="https://github.com/arbabkhan0"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#E50914] hover:bg-[#b20710] text-white text-sm font-bold px-5 py-2 rounded transition-all duration-300 hover:scale-105 active:scale-100"
-          >
-            Resume
-          </a>
-        </div>
-
-        {/* Mobile Hamburger */}
+        {/* ── Mobile hamburger ── */}
         <button
           id="mobile-menu-btn"
-          className="md:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8 focus:outline-none"
+          className="mobile-menu-btn"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: 4,
+            display: "flex",
+            flexDirection: "column",
+            gap: 5,
+            justifyContent: "center",
+            alignItems: "center",
+            width: 32,
+            height: 32,
+          }}
         >
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center ${menuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "opacity-0 scale-x-0" : ""
-              }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-white transition-all duration-300 origin-center ${menuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-          />
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              style={{
+                display: "block",
+                width: 22,
+                height: 2,
+                background: "#fff",
+                borderRadius: 2,
+                transition: "all 0.3s ease",
+                transform:
+                  menuOpen && i === 0
+                    ? "rotate(45deg) translate(5px, 5px)"
+                    : menuOpen && i === 2
+                    ? "rotate(-45deg) translate(5px, -5px)"
+                    : "none",
+                opacity: menuOpen && i === 1 ? 0 : 1,
+              }}
+            />
+          ))}
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* ── Mobile Dropdown ── */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
-          }`}
+        style={{
+          overflow: "hidden",
+          maxHeight: menuOpen ? "480px" : "0",
+          opacity: menuOpen ? 1 : 0,
+          transition: "max-height 0.35s ease, opacity 0.25s ease",
+        }}
+        className="mobile-dropdown"
       >
-        <div className="bg-[#141414]/98 backdrop-blur-md px-6 pb-6 border-t border-gray-800/50">
+        <div
+          style={{
+            background: "rgba(14,14,14,0.98)",
+            backdropFilter: "blur(16px)",
+            borderTop: "1px solid #1f1f1f",
+            padding: "12px 24px 20px",
+          }}
+        >
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="block text-gray-300 hover:text-white py-3 border-b border-gray-800/50 text-sm font-medium transition-colors"
               onClick={() => setMenuOpen(false)}
+              style={{
+                display: "block",
+                color: "#aaa",
+                fontSize: 15,
+                fontWeight: 600,
+                padding: "13px 0",
+                borderBottom: "1px solid #1f1f1f",
+                textDecoration: "none",
+                transition: "color 0.2s",
+                fontFamily: "inherit",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#aaa")}
             >
               {link.label}
             </a>
@@ -136,14 +211,75 @@ const Navbar = () => {
             href="https://github.com/arbabkhan0"
             target="_blank"
             rel="noopener noreferrer"
-            className="block mt-4 bg-[#E50914] hover:bg-[#b20710] text-white text-center py-2.5 rounded font-bold text-sm transition-colors"
             onClick={() => setMenuOpen(false)}
+            style={{
+              display: "block",
+              marginTop: 16,
+              background: "#E50914",
+              color: "#fff",
+              fontWeight: 700,
+              fontSize: 14,
+              textAlign: "center",
+              padding: "11px",
+              borderRadius: 6,
+              textDecoration: "none",
+            }}
           >
             Resume
           </a>
         </div>
       </div>
+
+      {/* Responsive visibility rules */}
+      <style>{`
+        .desktop-nav    { display: flex !important; }
+        .desktop-resume { display: flex !important; }
+        .mobile-logo    { display: none !important; }
+        .mobile-menu-btn{ display: none !important; }
+
+        @media (max-width: 768px) {
+          .desktop-nav    { display: none !important; }
+          .desktop-resume { display: none !important; }
+          .mobile-logo    { display: block !important; }
+          .mobile-menu-btn{ display: flex !important; }
+        }
+      `}</style>
     </nav>
+  );
+};
+
+/* ── Nav link with hover underline ── */
+const NavLink = ({ label, href }) => {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <a
+      href={href}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        color: hovered ? "#fff" : "#bbb",
+        fontSize: 14,
+        fontWeight: 600,
+        textDecoration: "none",
+        position: "relative",
+        transition: "color 0.2s ease",
+        letterSpacing: "0.01em",
+        paddingBottom: 2,
+        fontFamily: "inherit",
+      }}
+    >
+      {label}
+      <span style={{
+        position: "absolute",
+        bottom: -2,
+        left: 0,
+        height: 2,
+        width: hovered ? "100%" : "0%",
+        background: "#E50914",
+        borderRadius: 2,
+        transition: "width 0.25s ease",
+      }} />
+    </a>
   );
 };
 

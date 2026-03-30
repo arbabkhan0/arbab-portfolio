@@ -33,6 +33,16 @@ const projects = [
     tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP", "MySQL"],
     category: "Web Projects",
   },
+  {
+    title: "ecovision",
+    description:
+      "AI-powered full-stack web application I built with a focus on sustainability and waste-to-value innovation 🌱 The idea behind EcoVision is simple: to help people turn everyday waste into practical upcycling ideas, useful products, and even small business opportunities using generative AI.",
+    image: riderent,
+    github: "https://github.com/arbabkhan0/RideRent",
+    live: "https://arbabkhan0.github.io/RideRent/",
+    tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP", "MySQL"],
+    category: "Web Projects",
+  },
 ];
 
 export default projects;
