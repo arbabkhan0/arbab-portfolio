@@ -296,7 +296,7 @@ const About = () => {
             >
               I'm a passionate Full Stack Developer who loves building scalable, secure, and beautiful
               web applications. I specialize in the MERN stack and enjoy solving real-world problems
-              through clean code and thoughtful UI design.
+              through clean code and thoughtful UI design gogga pogaaa.
             </p>
 
             {/* Stat cards */}
@@ -357,6 +357,7 @@ const About = () => {
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#E50914"; e.currentTarget.style.color = "#E50914"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#333"; e.currentTarget.style.color = "#ccc"; }}
               >
+                {/* lets connect */}
                 ↗ View GitHub
               </a>
             </div>
