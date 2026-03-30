@@ -11,5 +11,5 @@ My professional portfolio built using React + Vite + Tailwind CSS.
 - Contact section
 
 ### Daily Update 🚀
-
+// final fix
 Working on improving UI and adding new features.
