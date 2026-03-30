@@ -88,7 +88,15 @@ const Hero = () => {
           className="text-gray-400 text-base md:text-lg max-w-xl mb-10 leading-relaxed animate-fade-in-up"
           style={{ animationDelay: "0.4s", opacity: 0, animationFillMode: "forwards" }}
         >
-          MERN Stack Developer crafting scalable, secure, and beautiful and interative web
+          {/* MERN Stack Developer crafting scalable, secure, and beautiful and interative web
+
+
+
+
+
+          hvaschivsdcvdcvh
+          scdkjsvdcvwdkcvh
+          hvcdkhvcvwcvk */}
           applications. Currently at{" "}
           <span className="text-gray-200 font-medium">
             Lovely Professional University
