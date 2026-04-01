@@ -32,7 +32,7 @@ const SOCIAL = [
 ];
 
 const NAV_LINKS = [
-  { label: "About", href: "#hero" },
+  { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Certificates", href: "#certificates" },

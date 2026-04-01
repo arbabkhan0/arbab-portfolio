@@ -65,7 +65,7 @@ const Navbar = () => {
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
-            AK
+            ARBAB
           </a>
 
           {/* Desktop nav links */}
@@ -121,7 +121,7 @@ const Navbar = () => {
             textDecoration: "none",
           }}
         >
-          AK
+          ARBAB
         </a>
 
         {/* ── Mobile hamburger ── */}

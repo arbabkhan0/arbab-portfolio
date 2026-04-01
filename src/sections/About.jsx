@@ -283,7 +283,7 @@ const About = () => {
             </div>
 
             {/* Bio */}
-            <p
+            <div
               style={{
                 color: "#888",
                 fontSize: 16,
@@ -292,12 +292,21 @@ const About = () => {
                 marginLeft: 19,
                 borderLeft: "2px solid #E5091422",
                 paddingLeft: 18,
+                display: "flex",
+                flexDirection: "column",
+                gap: "16px",
               }}
             >
-              I'm a passionate Full Stack Developer who loves building scalable, secure, and beautiful
-              web applications. I specialize in the MERN stack and enjoy solving real-world problems
-              through clean code and thoughtful UI design gogga pogaaa.
-            </p>
+              <p>
+                I'm <strong style={{ color: "#fff", fontWeight: 700 }}>Arbab Khan</strong>, a B.Tech CSE student at <strong style={{ color: "#fff", fontWeight: 700 }}>Lovely Professional University</strong> with a sharp focus on engineering modern, scalable web applications. I work across the full MERN stack — architecting clean APIs, crafting responsive UIs, and shipping efficient solutions that solve real problems.
+              </p>
+              <p>
+                Beyond building projects, I consistently sharpen my problem-solving through LeetCode — because solid DSA fundamentals are the backbone of every great developer.
+              </p>
+              <p>
+                I thrive in agile, collaborative environments, bring genuine curiosity to every sprint, and I'm actively seeking opportunities where I can push commits that matter, scale systems that grow, and level up alongside talented engineers.
+              </p>
+            </div>
 
             {/* Stat cards */}
             <div
@@ -313,53 +322,50 @@ const About = () => {
               ))}
             </div>
 
-            {/* CTA links */}
-            <div style={{ display: "flex", gap: 12, marginTop: 32, marginLeft: 19 }}>
-              <a
-                href="#contact"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "#E50914",
-                  color: "#fff",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  padding: "12px 24px",
-                  borderRadius: 8,
-                  textDecoration: "none",
-                  transition: "all 0.25s ease",
-                  boxShadow: "0 8px 24px #E5091430",
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = "#b20710"; e.currentTarget.style.transform = "scale(1.04)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = "#E50914"; e.currentTarget.style.transform = "scale(1)"; }}
-              >
-                ✉ Let's Connect
-              </a>
-              <a
-                href="https://github.com/arbabkhan0"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "transparent",
-                  color: "#ccc",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  padding: "12px 24px",
-                  borderRadius: 8,
-                  textDecoration: "none",
-                  border: "1.5px solid #333",
-                  transition: "all 0.25s ease",
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#E50914"; e.currentTarget.style.color = "#E50914"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "#333"; e.currentTarget.style.color = "#ccc"; }}
-              >
-                {/* lets connect */}
-                ↗ View GitHub
-              </a>
+            {/* Skills Badges (Replacing CTA Links) */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 32, marginLeft: 19 }}>
+              {[
+                "MERN Architecture",
+                "UI / UX Crafting",
+                "Data Structures",
+                "App Scalability",
+                "API Design"
+              ].map((skill) => (
+                <div
+                  key={skill}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "10px 20px",
+                    background: "rgba(229, 9, 20, 0.03)",
+                    border: "1px solid rgba(229, 9, 20, 0.2)",
+                    borderRadius: 99,
+                    color: "#e5e5e5",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    letterSpacing: "0.5px",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    cursor: "default",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = "#E50914";
+                    e.currentTarget.style.background = "rgba(229, 9, 20, 0.08)";
+                    e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.transform = "translateY(-3px)";
+                    e.currentTarget.style.boxShadow = "0 6px 16px rgba(229, 9, 20, 0.2)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(229, 9, 20, 0.2)";
+                    e.currentTarget.style.background = "rgba(229, 9, 20, 0.03)";
+                    e.currentTarget.style.color = "#e5e5e5";
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
+                >
+                  {skill}
+                </div>
+              ))}
             </div>
           </div>
         </div>

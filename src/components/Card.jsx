@@ -74,34 +74,8 @@ const Card = ({ project }) => {
             </span>
           </div>
 
-          {/* Center: Play + Info buttons */}
+          {/* Center: Removed Play + Info buttons as requested */}
           <div className="flex items-center justify-center gap-3">
-            {project.live ? (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-1.5 bg-white hover:bg-gray-200
-                  text-black font-black text-xs px-4 py-2 rounded
-                  transition-all duration-200 hover:scale-105 shadow-xl"
-              >
-                <PlayIcon /> Live Demo
-              </a>
-            ) : null}
-            {project.github ? (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-1.5 bg-white/20 hover:bg-white/30
-                  text-white font-bold text-xs px-4 py-2 rounded border border-white/40
-                  transition-all duration-200 hover:scale-105 shadow-xl backdrop-blur-sm"
-              >
-                <GitHubIcon /> GitHub
-              </a>
-            ) : null}
           </div>
           {/* Bottom spacer */}
           <div />
@@ -119,22 +93,11 @@ const Card = ({ project }) => {
           shadow-2xl shadow-black/80"
         style={{ top: "100%", transition: "max-h 0.35s ease, opacity 0.25s ease" }}
       >
-        {/* Title + external link icon */}
+        {/* Title without external link icon */}
         <div className="flex items-start justify-between gap-2 mb-2">
           <h3 className="text-white font-black text-base leading-tight">
             {project.title}
           </h3>
-          {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-[#E50914] transition-colors flex-shrink-0 mt-0.5"
-              title="Open live demo"
-            >
-              <ExternalIcon />
-            </a>
-          )}
         </div>
 
         {/* Description */}
@@ -155,8 +118,8 @@ const Card = ({ project }) => {
           ))}
         </div>
 
-        {/* Action row */}
-        <div className="flex gap-2 pt-1 border-t border-[#2a2a2a]">
+        {/* Action row (Live / GitHub) */}
+        <div className="flex gap-2 pt-2 border-t border-[#2a2a2a]">
           {project.github && (
             <a
               href={project.github}
@@ -166,7 +129,7 @@ const Card = ({ project }) => {
                 bg-[#2a2a2a] hover:bg-[#333] text-gray-200 text-xs font-bold
                 py-2 rounded transition-colors duration-200"
             >
-              <GitHubIcon /> Source
+              <GitHubIcon /> GitHub
             </a>
           )}
           {project.live && (
@@ -178,10 +141,12 @@ const Card = ({ project }) => {
                 bg-[#E50914] hover:bg-[#b20710] text-white text-xs font-bold
                 py-2 rounded transition-colors duration-200"
             >
-              <PlayIcon /> Watch Live
+              <PlayIcon /> Live Demo
             </a>
           )}
         </div>
+
+
       </div>
 
     </div>
