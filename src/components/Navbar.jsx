@@ -34,6 +34,7 @@ const Navbar = () => {
       }}
     >
       <div
+        className="nav-container"
         style={{
           maxWidth: "100%",
           padding: "0 40px",
@@ -65,7 +66,7 @@ const Navbar = () => {
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
-            ARBAB
+            AK
           </a>
 
           {/* Desktop nav links */}
@@ -108,21 +109,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* ── Mobile: AK logo ── */}
-        <a
-          href="#hero"
-          className="mobile-logo"
-          style={{
-            fontFamily: "Georgia, 'Times New Roman', serif",
-            fontSize: "1.8rem",
-            fontWeight: 900,
-            fontStyle: "italic",
-            color: "#E50914",
-            textDecoration: "none",
-          }}
-        >
-          ARBAB
-        </a>
+
 
         {/* ── Mobile hamburger ── */}
         <button
@@ -230,17 +217,15 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Responsive visibility rules */}
       <style>{`
         .desktop-nav    { display: flex !important; }
         .desktop-resume { display: flex !important; }
-        .mobile-logo    { display: none !important; }
         .mobile-menu-btn{ display: none !important; }
 
         @media (max-width: 768px) {
+          .nav-container  { padding: 0 20px !important; }
           .desktop-nav    { display: none !important; }
           .desktop-resume { display: none !important; }
-          .mobile-logo    { display: block !important; }
           .mobile-menu-btn{ display: flex !important; }
         }
       `}</style>

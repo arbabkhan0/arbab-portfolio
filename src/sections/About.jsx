@@ -89,6 +89,7 @@ const About = () => {
     <section
       id="about"
       ref={sectionRef}
+      className="about-section"
       style={{
         background: "#141414",
         padding: "100px 0",
@@ -122,6 +123,7 @@ const About = () => {
       />
 
       <div
+        className="about-container"
         style={{
           maxWidth: 1400,
           margin: "0 auto",
@@ -255,7 +257,7 @@ const About = () => {
             </div>
 
             {/* Info pills row */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24, marginLeft: 19 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
               {[
                 { icon: "👤", text: "Arbab Khan" },
                 { icon: "💻", text: "Full Stack MERN Developer" },
@@ -289,7 +291,6 @@ const About = () => {
                 fontSize: 16,
                 lineHeight: 1.8,
                 marginBottom: 36,
-                marginLeft: 19,
                 borderLeft: "2px solid #E5091422",
                 paddingLeft: 18,
                 display: "flex",
@@ -314,7 +315,6 @@ const About = () => {
                 display: "grid",
                 gridTemplateColumns: "repeat(4, 1fr)",
                 gap: 12,
-                marginLeft: 19,
               }}
             >
               {STATS.map((stat) => (
@@ -323,7 +323,7 @@ const About = () => {
             </div>
 
             {/* Skills Badges (Replacing CTA Links) */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 32, marginLeft: 19 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 32 }}>
               {[
                 "MERN Architecture",
                 "UI / UX Crafting",
@@ -371,9 +371,10 @@ const About = () => {
         </div>
       </div>
 
-      {/* Responsive grid @media override */}
       <style>{`
         @media (max-width: 768px) {
+          .about-section { padding: 60px 0 !important; }
+          .about-container { padding: 0 20px !important; }
           #about > div > div {
             grid-template-columns: 1fr !important;
             gap: 40px !important;

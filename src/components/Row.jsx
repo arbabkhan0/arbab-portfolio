@@ -1,8 +1,27 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Card from "./Card";
 
 const Row = ({ title, data }) => {
   const rowRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto-scroll logic added cleanly
+  useEffect(() => {
+    let interval;
+    if (!isPaused && data && data.length > 0) {
+      interval = setInterval(() => {
+        if (rowRef.current) {
+          const { scrollLeft, scrollWidth, clientWidth } = rowRef.current;
+          if (scrollLeft + clientWidth >= scrollWidth - 10) {
+            rowRef.current.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            rowRef.current.scrollBy({ left: 340, behavior: "smooth" });
+          }
+        }
+      }, 2000); // 2 seconds interval
+    }
+    return () => clearInterval(interval);
+  }, [isPaused, data]);
 
   const scroll = (direction) => {
     if (rowRef.current) {
@@ -16,7 +35,11 @@ const Row = ({ title, data }) => {
   if (!data || data.length === 0) return null;
 
   return (
-    <div className="px-6 md:px-10 mt-10 group/row">
+    <div 
+      className="px-6 md:px-10 mt-10 group/row"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       {/* Row header */}
       <h3 className="text-lg md:text-xl font-bold mb-5 text-gray-200 flex items-center gap-3">
         <span className="w-1 h-5 bg-[#E50914] rounded-full inline-block" />

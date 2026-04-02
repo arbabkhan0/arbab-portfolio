@@ -276,6 +276,7 @@ const Arsenal = () => {
   return (
     <section
       id="skills"
+      className="skills-section"
       style={{
         padding: "90px 0 80px",
         background: "#141414",
@@ -307,7 +308,7 @@ const Arsenal = () => {
         pointerEvents: "none",
       }} />
 
-      <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 40px", position: "relative" }}>
+      <div className="skills-container" style={{ maxWidth: 1400, margin: "0 auto", padding: "0 40px", position: "relative" }}>
 
         {/* ── Section Header ── */}
         <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 40, flexWrap: "wrap", gap: 16 }}>
@@ -318,7 +319,7 @@ const Arsenal = () => {
                 My <span style={{ color: "#E50914" }}>Arsenal</span> ⚔️
               </h2>
             </div>
-            <p style={{ color: "#555", fontSize: 15, margin: "0 0 0 19px", fontWeight: 500 }}>
+            <p style={{ color: "#555", fontSize: 15, margin: "0", fontWeight: 500 }}>
               Tools and technologies I wield on a daily basis
             </p>
           </div>
@@ -440,6 +441,8 @@ const Arsenal = () => {
           to   { transform: translateX(-50%); }
         }
         @media (max-width: 768px) {
+          .skills-section { padding: 60px 0 40px !important; }
+          .skills-container { padding: 0 20px !important; }
           #skills > div {
             padding: 0 20px !important;
           }

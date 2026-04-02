@@ -104,7 +104,7 @@ const Contact = () => {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          
+
           {/* Left Column - Form & Headings */}
           <div className="flex flex-col justify-center">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
@@ -184,7 +184,7 @@ const Contact = () => {
                   </>
                 )}
               </button>
-              
+
               {result && (
                 <div className={`mt-4 text-center font-semibold text-sm ${result.includes("success") ? "text-green-500" : "text-[#E50914]"}`}>
                   {result}
