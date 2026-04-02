@@ -56,16 +56,41 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [result, setResult] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Use mailto as the fallback action
-    const mailtoUrl = `mailto:arbabkhanshab@gmail.com?subject=${encodeURIComponent(
-      formData.subject
-    )}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )}`;
-    window.location.href = mailtoUrl;
+    setIsSubmitting(true);
+    setResult("");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "a2473692-12fd-44e9-a2a2-95a465bc2e43",
+          ...formData,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        setResult("Message sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setResult(""), 5000);
+      } else {
+        setResult(data.message || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      setResult("Something went wrong. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -148,10 +173,23 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-[#E50914] to-red-600 text-white font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(229,9,20,0.3)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 mt-4"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-[#E50914] to-red-600 text-white font-bold text-lg py-4 rounded-xl hover:shadow-[0_0_30px_rgba(229,9,20,0.3)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send Message <SendIcon />
+                {isSubmitting ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    Send Message <SendIcon />
+                  </>
+                )}
               </button>
+              
+              {result && (
+                <div className={`mt-4 text-center font-semibold text-sm ${result.includes("success") ? "text-green-500" : "text-[#E50914]"}`}>
+                  {result}
+                </div>
+              )}
             </form>
           </div>
 
