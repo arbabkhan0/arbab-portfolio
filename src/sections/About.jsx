@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import profileImg from "../assets/hero.png";
+import profileImg from "../assets/hero.jpeg";
 
 const STATS = [
   { value: "3+",    label: "Projects",    suffix: "" },

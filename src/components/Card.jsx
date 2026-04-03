@@ -62,11 +62,9 @@ const Card = ({ project }) => {
         </div>
       </div>
 
-      {/* ── Expanded info panel — driven by React state now! ── */}
+      {/* ── Expanded info panel — always visible ── */}
       <div
-        className={`absolute left-0 right-0 z-30 bg-[#181818] border border-[#333] border-t-2 border-t-[#E50914] rounded-b-xl p-4 overflow-hidden shadow-2xl shadow-black/80 transition-all duration-300 ease-in-out ${
-          isHovered ? 'max-h-60 opacity-100 pointer-events-auto' : 'max-h-0 opacity-0 pointer-events-none'
-        }`}
+        className="absolute left-0 right-0 z-30 bg-[#181818] border border-[#333] border-t-2 border-t-[#E50914] rounded-b-xl p-4 shadow-2xl shadow-black/80 pointer-events-auto"
         style={{ top: "100%" }}
       >
         <div className="flex items-start justify-between gap-2 mb-2">

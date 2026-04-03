@@ -1,22 +1,46 @@
 import React, { useState, useEffect } from "react";
 
+const navLinks = [
+  { label: "About",        href: "#about" },
+  { label: "Projects",     href: "#projects" },
+  { label: "Skills",       href: "#skills" },
+  { label: "Certificates", href: "#certificates" },
+  { label: "Contact",      href: "#contact" },
+];
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+      
+      let current = "";
+      navLinks.forEach((link) => {
+        const id = link.href.substring(1);
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            current = id;
+          }
+        }
+      });
+
+      // Highlight the last item if scrolled to the absolute bottom
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
+        current = navLinks[navLinks.length - 1].href.substring(1);
+      }
+
+      if (current) setActiveSection(current);
+    };
+
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Init on mount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const navLinks = [
-    { label: "About",        href: "#about" },
-    { label: "Projects",     href: "#projects" },
-    { label: "Skills",       href: "#skills" },
-    { label: "Certificates", href: "#certificates" },
-    { label: "Contact",      href: "#contact" },
-  ];
 
   return (
     <nav
@@ -42,46 +66,67 @@ const Navbar = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          position: "relative",
         }}
       >
-        {/* ── Left: Logo + Nav links ── */}
-        <div style={{ display: "flex", alignItems: "center", gap: 36 }}>
-          {/* AK Netflix logo */}
+        {/* ── Left: Logo ── */}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          {/* AK Profile logo */}
           <a
             href="#hero"
             style={{
-              fontFamily: "Georgia, 'Times New Roman', serif",
-              fontSize: "2rem",
-              fontWeight: 900,
-              fontStyle: "italic",
-              color: "#E50914",
-              letterSpacing: "-1px",
-              textShadow: "2px 2px 0 #8B0000, 3px 3px 0 #6b0000, 0 4px 12px rgba(229,9,20,0.4)",
-              lineHeight: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "40px",
+              height: "40px",
+              borderRadius: "6px",
+              background: "linear-gradient(135deg, #E50914 0%, #8B0000 100%)",
+              color: "#fff",
+              fontSize: "1.1rem",
+              fontWeight: 700,
+              fontFamily: "system-ui, -apple-system, sans-serif",
+              letterSpacing: "1px",
               textDecoration: "none",
               userSelect: "none",
-              transition: "opacity 0.2s",
+              transition: "transform 0.3s ease, box-shadow 0.3s ease",
               flexShrink: 0,
+              boxShadow: "0 4px 10px rgba(229, 9, 20, 0.3)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.08)";
+              e.currentTarget.style.boxShadow = "0 6px 16px rgba(229, 9, 20, 0.6)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.boxShadow = "0 4px 10px rgba(229, 9, 20, 0.3)";
+            }}
           >
             AK
           </a>
 
-          {/* Desktop nav links */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 28,
-            }}
-            className="desktop-nav"
-          >
-            {navLinks.map((link) => (
-              <NavLink key={link.label} {...link} />
-            ))}
-          </div>
+        </div>
+
+        {/* ── Center: Desktop nav links ── */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 40,
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+          className="desktop-nav"
+        >
+          {navLinks.map((link) => (
+            <NavLink 
+              key={link.label} 
+              {...link} 
+              isActive={activeSection === link.href.substring(1)} 
+            />
+          ))}
         </div>
 
         {/* ── Right: Resume button ── */}
@@ -172,28 +217,31 @@ const Navbar = () => {
             padding: "12px 24px 20px",
           }}
         >
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              style={{
-                display: "block",
-                color: "#aaa",
-                fontSize: 15,
-                fontWeight: 600,
-                padding: "13px 0",
-                borderBottom: "1px solid #1f1f1f",
-                textDecoration: "none",
-                transition: "color 0.2s",
-                fontFamily: "inherit",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#aaa")}
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.substring(1);
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  display: "block",
+                  color: isActive ? "#E50914" : "#aaa",
+                  fontSize: 15,
+                  fontWeight: 600,
+                  padding: "13px 0",
+                  borderBottom: "1px solid #1f1f1f",
+                  textDecoration: "none",
+                  transition: "color 0.2s",
+                  fontFamily: "inherit",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = isActive ? "#E50914" : "#fff")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? "#E50914" : "#aaa")}
+              >
+                {link.label}
+              </a>
+            );
+          })}
           <a
             href="https://github.com/arbabkhan0"
             target="_blank"
@@ -234,16 +282,18 @@ const Navbar = () => {
 };
 
 /* ── Nav link with hover underline ── */
-const NavLink = ({ label, href }) => {
+const NavLink = ({ label, href, isActive }) => {
   const [hovered, setHovered] = useState(false);
+  const showLine = hovered || isActive;
+  
   return (
     <a
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        color: hovered ? "#fff" : "#bbb",
-        fontSize: 14,
+        color: showLine ? "#fff" : "#bbb",
+        fontSize: 16,
         fontWeight: 600,
         textDecoration: "none",
         position: "relative",
@@ -259,7 +309,7 @@ const NavLink = ({ label, href }) => {
         bottom: -2,
         left: 0,
         height: 2,
-        width: hovered ? "100%" : "0%",
+        width: showLine ? "100%" : "0%",
         background: "#E50914",
         borderRadius: 2,
         transition: "width 0.25s ease",
