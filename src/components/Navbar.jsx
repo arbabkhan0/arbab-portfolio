@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 const navLinks = [
-  { label: "About",        href: "#about" },
-  { label: "Projects",     href: "#projects" },
-  { label: "Skills",       href: "#skills" },
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
   { label: "Certificates", href: "#certificates" },
-  { label: "Contact",      href: "#contact" },
+  { label: "Journey", href: "#journey" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
@@ -16,7 +17,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
-      
+
       let current = "";
       navLinks.forEach((link) => {
         const id = link.href.substring(1);
@@ -121,10 +122,10 @@ const Navbar = () => {
           className="desktop-nav"
         >
           {navLinks.map((link) => (
-            <NavLink 
-              key={link.label} 
-              {...link} 
-              isActive={activeSection === link.href.substring(1)} 
+            <NavLink
+              key={link.label}
+              {...link}
+              isActive={activeSection === link.href.substring(1)}
             />
           ))}
         </div>
@@ -190,8 +191,8 @@ const Navbar = () => {
                   menuOpen && i === 0
                     ? "rotate(45deg) translate(5px, 5px)"
                     : menuOpen && i === 2
-                    ? "rotate(-45deg) translate(5px, -5px)"
-                    : "none",
+                      ? "rotate(-45deg) translate(5px, -5px)"
+                      : "none",
                 opacity: menuOpen && i === 1 ? 0 : 1,
               }}
             />
@@ -285,7 +286,7 @@ const Navbar = () => {
 const NavLink = ({ label, href, isActive }) => {
   const [hovered, setHovered] = useState(false);
   const showLine = hovered || isActive;
-  
+
   return (
     <a
       href={href}
