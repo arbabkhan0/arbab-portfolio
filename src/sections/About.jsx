@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import profileImg from "../assets/hero.jpeg";
+import profileImg from "../assets/my profile.png";
 
 const STATS = [
   { value: "3+",    label: "Projects",    suffix: "" },
@@ -153,72 +153,91 @@ const About = () => {
               onMouseLeave={() => setImgHovered(false)}
               style={{
                 position: "relative",
-                maxWidth: 400,
+                maxWidth: 450,
                 margin: "0 auto",
-                borderRadius: 20,
-                overflow: "hidden",
+                background: "#181818",
+                padding: 16,
+                borderRadius: 24,
                 boxShadow: imgHovered
-                  ? "0 30px 80px #E5091430, 0 0 0 2px #E5091444"
-                  : "0 20px 60px #00000060",
-                transition: "all 0.4s ease",
-                transform: imgHovered ? "scale(1.02)" : "scale(1)",
+                  ? "0 30px 80px #E5091430, 0 0 0 2px #E5091466"
+                  : "0 20px 60px #00000080",
+                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                transform: imgHovered ? "scale(1.02) translateY(-4px)" : "scale(1)",
                 cursor: "default",
               }}
             >
-              {/* Red gradient overlay on top edge */}
-              <div
+              {/* Image Container with vertical cropping */}
+              <div 
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: 4,
-                  background: "linear-gradient(90deg, #E50914, #ff4a4a)",
-                  zIndex: 2,
-                }}
-              />
-              <img
-                src={profileImg}
-                alt="Arbab Khan - Full Stack Developer"
-                style={{
+                  position: "relative",
                   width: "100%",
-                  height: "auto",
-                  display: "block",
-                  filter: imgHovered ? "brightness(1.1)" : "brightness(0.95)",
-                  transition: "filter 0.4s ease",
-                }}
-              />
-              {/* Bottom gradient overlay */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: "40%",
-                  background: "linear-gradient(transparent, #141414cc)",
-                  zIndex: 1,
-                }}
-              />
-              {/* Name badge */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 20,
-                  left: 20,
-                  zIndex: 3,
-                  background: "rgba(0,0,0,0.85)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid #E5091433",
-                  borderRadius: 12,
-                  padding: "10px 16px",
+                  aspectRatio: "1/1",
+                  borderRadius: 16,
+                  overflow: "hidden",
+                  backgroundColor: "#111",
                 }}
               >
-                <div style={{ color: "#fff", fontSize: 14, fontWeight: 700 }}>
+                {/* Red gradient overlay on top edge */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 4,
+                    background: "linear-gradient(90deg, #E50914, #ff4a4a)",
+                    zIndex: 2,
+                  }}
+                />
+                <img
+                  src={profileImg}
+                  alt="Arbab Khan - Full Stack Developer"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "top center",
+                    display: "block",
+                    filter: imgHovered ? "brightness(1.05) contrast(1.05)" : "brightness(0.95)",
+                    transition: "filter 0.4s ease",
+                  }}
+                />
+                {/* Bottom gradient overlay to fade into the card */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: "50%",
+                    background: "linear-gradient(transparent, #181818)",
+                    zIndex: 1,
+                  }}
+                />
+              </div>
+
+              {/* Name badge naturally sitting on the border edge */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: -15,
+                  left: "10%",
+                  right: "10%",
+                  zIndex: 3,
+                  background: "rgba(20,20,20,0.9)",
+                  backdropFilter: "blur(12px)",
+                  border: "1px solid #E5091444",
+                  borderRadius: 12,
+                  padding: "14px",
+                  textAlign: "center",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.6)",
+                }}
+              >
+                <div style={{ color: "#fff", fontSize: 17, fontWeight: 800 }}>
                   Arbab Khan
                 </div>
-                <div style={{ color: "#E50914", fontSize: 11, fontWeight: 600, marginTop: 2 }}>
-                  Full Stack Developer
+                <div style={{ color: "#E50914", fontSize: 11, fontWeight: 700, marginTop: 4, letterSpacing: "1.5px" }}>
+                  FULL STACK DEV
                 </div>
               </div>
             </div>
