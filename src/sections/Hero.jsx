@@ -1,5 +1,5 @@
 import React from "react";
-import heroImg from "../assets/hero.jpeg";
+import heroVideo from "../assets/hero section.mp4";
 
 const Hero = () => {
   return (
@@ -8,39 +8,28 @@ const Hero = () => {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center px-6 md:px-16 lg:px-24 overflow-hidden"
     >
-      {/* ── Background layers ── */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#1a0000] to-[#141414]" />
-
-      {/* Red atmospheric glow */}
-      <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[#E50914]/8 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#E50914]/5 rounded-full blur-3xl pointer-events-none" />
-
-      {/* ── Cinematic Foreground Character ── */}
-      <div 
-        className="absolute bottom-0 right-0 lg:-right-8 w-[70%] lg:w-[45%] max-w-[600px] h-full flex flex-col justify-end pointer-events-none z-0 mix-blend-lighten opacity-60 lg:opacity-100 transition-opacity duration-700"
-      >
-         {/* Subtle red cinematic glow behind the character */}
-         <div className="absolute inset-0 top-1/4 bg-[#E50914]/20 blur-[130px] rounded-full z-0" />
-         
-         <img 
-           src={heroImg} 
-           alt="Arbab Khan Portrait" 
-           className="w-full h-auto max-h-[90vh] object-contain object-bottom relative z-10 animate-float drop-shadow-2xl"
-           style={{
-             filter: "contrast(1.15) brightness(0.9)",
-             maskImage: "linear-gradient(to top, transparent 0%, black 15%), linear-gradient(to right, transparent 0%, black 20%)",
-             WebkitMaskImage: "linear-gradient(to top, transparent 0%, black 15%), linear-gradient(to right, transparent 0%, black 20%)",
-           }}
-         />
-
-         {/* Gradient overlays to seamlessly fade the image edge into the deep dark background */}
-         <div className="absolute bottom-0 left-0 right-0 h-[25vh] bg-gradient-to-t from-[#141414] via-[#141414]/90 to-transparent z-20" />
-         <div className="absolute top-0 bottom-0 left-0 w-[35%] bg-gradient-to-r from-[#141414] via-[#141414]/60 to-transparent z-20" />
-         <div className="absolute top-0 bottom-0 right-0 w-[10%] bg-gradient-to-l from-[#141414] to-transparent z-20" />
+      {/* ── Background Video Layer ── */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
+        {/* Dark overlays to maintain focus on the text and cinematic feel */}
+        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/50 to-transparent z-10" />
       </div>
 
+      {/* Red atmospheric glow */}
+      <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[#E50914]/15 rounded-full blur-[100px] pointer-events-none z-0" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#E50914]/10 rounded-full blur-3xl pointer-events-none z-0" />
+
       {/* ── Content ── */}
-      <div className="relative z-10 max-w-3xl lg:w-2/3 pointer-events-auto">
+      <div className="relative z-10 max-w-5xl">
 
         {/* Available for work badge */}
         <div className="flex items-center gap-2.5 mb-8 animate-fade-in">
