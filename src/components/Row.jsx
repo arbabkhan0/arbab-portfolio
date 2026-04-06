@@ -5,22 +5,31 @@ const Row = ({ title, data }) => {
   const rowRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-scroll logic added cleanly
+  // Auto-scroll logic added cleanly (Continuous smooth scrolling)
   useEffect(() => {
-    let interval;
+    let animationFrameId;
+    const speed = 0.5; // adjust for faster/slower continuous scrolling
+
+    const animateScroll = () => {
+      if (!rowRef.current) return;
+      
+      const { scrollLeft, scrollWidth, clientWidth } = rowRef.current;
+      
+      // Snap back to the beginning when reaching the end
+      if (scrollLeft + clientWidth >= scrollWidth - 1) {
+        rowRef.current.scrollLeft = 0;
+      } else {
+        rowRef.current.scrollLeft += speed;
+      }
+      
+      animationFrameId = requestAnimationFrame(animateScroll);
+    };
+
     if (!isPaused && data && data.length > 0) {
-      interval = setInterval(() => {
-        if (rowRef.current) {
-          const { scrollLeft, scrollWidth, clientWidth } = rowRef.current;
-          if (scrollLeft + clientWidth >= scrollWidth - 10) {
-            rowRef.current.scrollTo({ left: 0, behavior: "smooth" });
-          } else {
-            rowRef.current.scrollBy({ left: 340, behavior: "smooth" });
-          }
-        }
-      }, 2000); // 2 seconds interval
+      animationFrameId = requestAnimationFrame(animateScroll);
     }
-    return () => clearInterval(interval);
+    
+    return () => cancelAnimationFrame(animationFrameId);
   }, [isPaused, data]);
 
   const scroll = (direction) => {

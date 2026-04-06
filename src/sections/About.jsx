@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import profileImg from "../assets/my profile.png";
+import profileImg from "../assets/My Profile (2).png";
 
 const STATS = [
-  { value: "3+",    label: "Projects",    suffix: "" },
-  { value: "100+",  label: "LeetCode",    suffix: "" },
-  { value: "90%",   label: "AI Accuracy", suffix: "" },
-  { value: "7.28",  label: "CGPA",        suffix: "" },
+  { value: "4+", label: "Projects", suffix: "" },
+  { value: "200+", label: "Problem Solved", suffix: "" },
+  { value: "90%", label: "AI Accuracy", suffix: "" },
+  { value: "150+", label: "LeetCode", suffix: "" },
 ];
 
 const StatCard = ({ value, label }) => {
@@ -167,7 +167,7 @@ const About = () => {
               }}
             >
               {/* Image Container with vertical cropping */}
-              <div 
+              <div
                 style={{
                   position: "relative",
                   width: "100%",
@@ -191,7 +191,7 @@ const About = () => {
                 />
                 <img
                   src={profileImg}
-                  alt="Arbab Khan - Full Stack Developer"
+                  alt="Arbab Khan - Web Developer"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -237,7 +237,7 @@ const About = () => {
                   Arbab Khan
                 </div>
                 <div style={{ color: "#E50914", fontSize: 11, fontWeight: 700, marginTop: 4, letterSpacing: "1.5px" }}>
-                  FULL STACK DEV
+                  Web Developer
                 </div>
               </div>
             </div>
@@ -318,13 +318,16 @@ const About = () => {
               }}
             >
               <p>
-                I'm <strong style={{ color: "#fff", fontWeight: 700 }}>Arbab Khan</strong>, a B.Tech CSE student at <strong style={{ color: "#fff", fontWeight: 700 }}>Lovely Professional University</strong> with a sharp focus on engineering modern, scalable web applications. I work across the full MERN stack — architecting clean APIs, crafting responsive UIs, and shipping efficient solutions that solve real problems.
+                I'm <strong style={{ color: "#fff", fontWeight: 700 }}>Arbab Khan</strong>, a B.Tech CSE student at <strong style={{ color: "#fff", fontWeight: 700 }}>Lovely Professional University</strong>, focused on building scalable, high-performance web applications using the <strong style={{ color: "#fff", fontWeight: 700 }}>MERN stack</strong>. I design clean APIs, develop responsive UIs, and deliver solutions that create real impact.
               </p>
               <p>
-                Beyond building projects, I consistently sharpen my problem-solving through LeetCode — because solid DSA fundamentals are the backbone of every great developer.
+                I practice data structures and algorithms on Codeing Platforms to get better at solving problems and writing efficient code.
               </p>
               <p>
-                I thrive in agile, collaborative environments, bring genuine curiosity to every sprint, and I'm actively seeking opportunities where I can push commits that matter, scale systems that grow, and level up alongside talented engineers.
+                Alongside this, I explore <strong style={{ color: "#fff", fontWeight: 700 }}>AI-powered development</strong>, applying Generative AI and prompt engineering to build smarter, more adaptive systems.
+              </p>
+              <p>
+                I enjoy working in fast-paced, agile teams and am driven to contribute to products that scale, solve meaningful problems, and make a difference.
               </p>
             </div>
 
@@ -345,9 +348,9 @@ const About = () => {
             <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 32 }}>
               {[
                 "MERN Architecture",
-                "UI / UX Crafting",
+                "UI / UX Designer",
                 "Data Structures",
-                "App Scalability",
+                "Web Scalability",
                 "API Design"
               ].map((skill) => (
                 <div

@@ -54,7 +54,6 @@ const journeyItems = [
     org: "Modern Era Public School (M.E.P.S)",
     duration: "2021 – 2023",
     status: null,
-    percentage: "75%",
     link: null,
     highlights: [
       "Completed Class XII with a focus on Physics, Chemistry, and Mathematics.",

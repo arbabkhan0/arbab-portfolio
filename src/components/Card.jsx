@@ -17,28 +17,23 @@ const Card = ({ project }) => {
 
   return (
     <div 
-      className="relative flex-shrink-0 w-[320px] md:w-[360px]"
+      className={`relative flex-shrink-0 w-[320px] md:w-[360px] transition-transform duration-300 ${isHovered ? '-translate-y-2 lg:scale-105 z-40' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* ── Main card image (16:9) ── */}
       <div
-        className="relative w-full rounded-lg overflow-hidden cursor-pointer select-none"
+        className="relative w-full rounded-lg overflow-hidden cursor-pointer select-none bg-[#0a0a0a]"
         style={{ aspectRatio: "16/9" }}
       >
         <img
           src={project.image}
           alt={project.title}
-          className={`w-full h-full object-cover transition-all duration-500 ${isHovered ? 'scale-110 brightness-50' : ''}`}
+          className={`w-full h-full object-contain transition-all duration-500 ${isHovered ? 'scale-110 brightness-50' : ''}`}
           draggable={false}
         />
 
-        <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`} />
-        <div className={`absolute bottom-0 left-0 right-0 p-3 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
-          <h3 className="text-white font-bold text-sm drop-shadow-lg truncate">
-            {project.title}
-          </h3>
-        </div>
+
 
         {project.category && (
           <div className="absolute top-2 left-2 z-10">
