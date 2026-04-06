@@ -113,8 +113,8 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-32 bg-[#141414] relative overflow-hidden">
-      {/* Subtle Glows */}
-      <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-[#E50914]/5 rounded-full blur-[150px] pointer-events-none" />
+      {/* Subtle Glows - hidden on mobile to increase scroll performance */}
+      <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-[#E50914]/5 rounded-full blur-[150px] pointer-events-none hidden md:block" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">

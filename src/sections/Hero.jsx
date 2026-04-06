@@ -24,9 +24,9 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/50 to-transparent z-10" />
       </div>
 
-      {/* Red atmospheric glow */}
-      <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[#E50914]/15 rounded-full blur-[100px] pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#E50914]/10 rounded-full blur-3xl pointer-events-none z-0" />
+      {/* Red atmospheric glow - hidden on small devices to fix lag */}
+      <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[#E50914]/15 rounded-full blur-[100px] pointer-events-none z-0 hidden md:block" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#E50914]/10 rounded-full blur-3xl pointer-events-none z-0 hidden md:block" />
 
       {/* ── Content ── */}
       <div className="relative z-10 w-full max-w-4xl mt-16 md:mt-24">
@@ -44,29 +44,17 @@ const Hero = () => {
 
         {/* Title */}
         <h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-none mb-6 animate-fade-in-up"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-none mb-4 animate-fade-in-up"
           style={{ animationDelay: "0.1s", opacity: 0, animationFillMode: "forwards", textShadow: "2px 2px 4px rgba(0,0,0,0.6)" }}
         >
           <span className="text-3xl sm:text-4xl md:text-5xl block mb-2 font-bold text-gray-200">Hii, I'm</span>
           <span className="text-[#E50914]">Arbab Khan</span>
         </h1>
 
-        {/* Metadata Row */}
-        <div
-          className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm md:text-base font-bold text-gray-300 mb-6 drop-shadow-md animate-fade-in-up flex-wrap"
-          style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards", textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
-        >
-          <span className="text-[#46d369]">99% Match</span>
-          <span>{new Date().getFullYear()}</span>
-          <span className="border border-gray-400 bg-black/40 rounded px-1.5 py-0.5 text-[10px] sm:text-xs text-white">U/A 16+</span>
-          <span>Web Developer</span>
-          <span className="border border-gray-400 bg-black/ 40 rounded px-1.5 py-0.5 text-[9px] sm:text-[10px]">HD</span>
-        </div>
-
         {/* Synopsis */}
         <p
-          className="text-white text-base md:text-lg lg:text-xl max-w-2xl mb-10 leading-snug animate-fade-in-up font-medium"
-          style={{ animationDelay: "0.3s", opacity: 0, animationFillMode: "forwards", textShadow: "1px 1px 3px rgba(0,0,0,0.8)" }}
+          className="text-white text-base md:text-lg lg:text-xl max-w-2xl mb-8 leading-snug animate-fade-in-up font-medium"
+          style={{ animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards", textShadow: "1px 1px 3px rgba(0,0,0,0.8)" }}
         >
           A passionate Web Developer specializing in the MERN stack. Building scalable web applications, creating smart solutions, and pushing the boundaries of web UI/UX.
         </p>

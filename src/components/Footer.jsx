@@ -53,7 +53,7 @@ const Footer = () => {
               ARBAB
             </span>
             <p className="text-gray-500 text-sm mt-3 leading-relaxed max-w-xs">
-              Full Stack MERN Developer building scalable, secure, and modern
+              Web Developer building scalable, secure, and modern
               web applications.
             </p>
             <div className="flex items-center gap-2 mt-4">
@@ -121,9 +121,6 @@ const Footer = () => {
         <div className="border-t border-[#1a1a1a] pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-gray-600 text-xs text-center">
             © {new Date().getFullYear()} Arbab Khan. All rights reserved.
-          </p>
-          <p className="text-gray-700 text-xs">
-            Built with React • Vite • Tailwind CSS
           </p>
         </div>
       </div>

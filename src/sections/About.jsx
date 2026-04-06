@@ -4,7 +4,6 @@ import profileImg from "../assets/My Profile (2).png";
 const STATS = [
   { value: "4+", label: "Projects", suffix: "" },
   { value: "200+", label: "Problem Solved", suffix: "" },
-  { value: "90%", label: "AI Accuracy", suffix: "" },
   { value: "150+", label: "LeetCode", suffix: "" },
 ];
 

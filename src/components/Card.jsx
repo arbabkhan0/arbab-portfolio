@@ -23,13 +23,13 @@ const Card = ({ project }) => {
     >
       {/* ── Main card image (16:9) ── */}
       <div
-        className="relative w-full rounded-lg overflow-hidden cursor-pointer select-none bg-[#0a0a0a]"
+        className="relative w-full rounded-t-xl overflow-hidden cursor-pointer select-none bg-[#0a0a0a]"
         style={{ aspectRatio: "16/9" }}
       >
         <img
           src={project.image}
           alt={project.title}
-          className={`w-full h-full object-contain transition-all duration-500 ${isHovered ? 'scale-110 brightness-50' : ''}`}
+          className={`w-full h-full object-cover transition-all duration-500 ${isHovered ? 'scale-110 brightness-50' : ''}`}
           draggable={false}
         />
 

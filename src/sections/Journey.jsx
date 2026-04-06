@@ -52,7 +52,7 @@ const journeyItems = [
     label: "Schooling",
     title: "Intermediate (PCM)",
     org: "Modern Era Public School (M.E.P.S)",
-    duration: "2021 – 2023",
+    duration: "2022 – 2023",
     status: null,
     link: null,
     highlights: [

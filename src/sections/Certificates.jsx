@@ -650,7 +650,7 @@ const Certificates = () => {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 260px), 1fr))",
               gap: 20,
               marginTop: 8,
               opacity: isAnimating ? 0 : 1,
