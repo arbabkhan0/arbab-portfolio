@@ -133,7 +133,7 @@ const Navbar = () => {
         {/* ── Right: Resume button ── */}
         <div className="desktop-resume">
           <a
-            href="https://github.com/arbabkhan0"
+            href="/Arbab%20specialized-CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -244,7 +244,7 @@ const Navbar = () => {
             );
           })}
           <a
-            href="https://github.com/arbabkhan0"
+            href="/Arbab%20specialized-CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
