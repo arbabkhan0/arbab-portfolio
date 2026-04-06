@@ -15,8 +15,8 @@ const journeyItems = [
     org: "W3Grads – FLAMES'25",
     duration: "Jun 2025 – Jul 2025",
     status: null,
-    link: "https://drive.google.com/drive/folders/1jUcYVnAxDMJI6ZfTckx82q3A64-maIuY",
-    linkText: "View Certificate / Link",
+    link: "https://drive.google.com/file/d/1F8ANRIDCHEPxqwmu6S0dIP8FoFJ0u8mi/view?usp=sharing",
+    linkText: "View Certificate",
     highlights: [
       "Built full-stack MERN applications with authentication and APIs",
       "Participated in 10+ Scrum meetings",
