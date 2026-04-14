@@ -197,8 +197,9 @@ const About = () => {
                     objectFit: "cover",
                     objectPosition: "top center",
                     display: "block",
+                    transform: imgHovered ? "scale(1.25)" : "scale(1.2)",
                     filter: imgHovered ? "brightness(1.05) contrast(1.05)" : "brightness(0.95)",
-                    transition: "filter 0.4s ease",
+                    transition: "all 0.4s ease",
                   }}
                 />
                 {/* Bottom gradient overlay to fade into the card */}
