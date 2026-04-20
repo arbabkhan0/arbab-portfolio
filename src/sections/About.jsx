@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import profileImg from "../assets/My Profile (2).png";
+import profileImg from "../assets/Profileimage.jpeg";
 
 const STATS = [
   { value: "4+", label: "Projects", suffix: "" },
@@ -197,7 +197,7 @@ const About = () => {
                     objectFit: "cover",
                     objectPosition: "top center",
                     display: "block",
-                    transform: imgHovered ? "scale(1.25)" : "scale(1.2)",
+                    transform: imgHovered ? "scale(1.25) translateY(-8%)" : "scale(1.2) translateY(-8%)",
                     filter: imgHovered ? "brightness(1.05) contrast(1.05)" : "brightness(0.95)",
                     transition: "all 0.4s ease",
                   }}
@@ -246,6 +246,7 @@ const About = () => {
           {/* ── Right: Content ── */}
           <div
             style={{
+              minWidth: 0,
               opacity: visible ? 1 : 0,
               transform: visible ? "translateX(0)" : "translateX(40px)",
               transition: "all 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.15s",
@@ -276,7 +277,7 @@ const About = () => {
             </div>
 
             {/* Info pills row */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24, minWidth: 0 }}>
               {[
                 { icon: "👤", text: "Arbab Khan" },
                 { icon: "💻", text: "Full Stack MERN Developer" },
@@ -295,6 +296,7 @@ const About = () => {
                     fontSize: 12,
                     color: "#aaa",
                     fontWeight: 600,
+                    whiteSpace: "normal",
                   }}
                 >
                   <span>{item.icon}</span>
@@ -395,8 +397,8 @@ const About = () => {
 
       <style>{`
         @media (max-width: 768px) {
-          .about-section { padding: 60px 0 !important; }
-          .about-container { padding: 0 20px !important; }
+          .about-section { padding: 60px 0 80px !important; }
+          .about-container { padding: 0 20px !important; overflow-x: hidden; }
           #about > div > div {
             grid-template-columns: 1fr !important;
             gap: 40px !important;

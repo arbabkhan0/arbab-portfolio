@@ -1,27 +1,23 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './NetflixIntro.css';
-import netflixJingle from '../nouveau-jingle-netflix.mp3';
 
 const NetflixIntro = ({ onFinish }) => {
   const [phase, setPhase] = useState('idle'); // idle | animate | done
-  const audioRef = useRef(null);
-
-  // Preload audio on mount
-  useEffect(() => {
-    audioRef.current = new Audio(netflixJingle);
-    audioRef.current.preload = 'auto';
-  }, []);
 
   const handleClick = useCallback(() => {
     if (phase !== 'idle') return;
 
-    // Play the real Netflix jingle
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch((e) => console.warn('Audio playback failed:', e));
-    }
-
     setPhase('animate');
+  }, [phase]);
+
+  // Auto-start animation after 5 seconds if no click occurs
+  useEffect(() => {
+    if (phase === 'idle') {
+      const autoTimer = setTimeout(() => {
+        setPhase('animate');
+      }, 5000);
+      return () => clearTimeout(autoTimer);
+    }
   }, [phase]);
 
   useEffect(() => {
